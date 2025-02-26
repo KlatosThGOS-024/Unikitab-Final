@@ -9,9 +9,11 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
     "prettier": "^3.5.0",
     "turbo": "^2.4.3",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "worker-loader": "^3.0.8"
   },
   "engines": {
     "node": ">=18"
@@ -20,5 +22,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "react-split": "^2.0.14"
+  }
 }

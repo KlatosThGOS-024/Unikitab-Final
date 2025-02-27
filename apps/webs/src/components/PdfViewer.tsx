@@ -13,7 +13,10 @@ export const PdfViewer = () => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
-    <div className="h-screen overflow-hidden border border-gray-300">
+    <div
+      className="h-screen overflow-hidden border w-full
+     border-gray-300"
+    >
       <Viewer
         fileUrl="/CSC-301_DSA.pdf"
         plugins={[defaultLayoutPluginInstance]}

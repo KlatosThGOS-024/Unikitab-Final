@@ -1,153 +1,5 @@
 "use client";
-// import React, { useState } from "react";
-// import { IoIosSend } from "react-icons/io";
-// import { CiCamera } from "react-icons/ci";
-// import { FaBahai } from "react-icons/fa";
-// import { UserMessage } from "./AiResponse/UserMessage";
-// import { AiResponse } from "./AiResponse/AiMessage";
-// interface ResponseProp {
-//   response_frm: string;
-//   response: string;
-//   responseId: string;
-// }
-// [];
-
-// const ResponseBox = ({ responses }: { responses: ResponseProp[] }) => {
-//   return (
-//     <section
-//       className="flex gap-[28px] flex-col bg-red-300
-//   overflow-scroll"
-//     >
-//       {responses.map((response) => {
-//         return (
-//           <div className="py-[21px]">
-//             {response.response_frm == "User" && (
-//               <div key={response.responseId}>
-//                 <UserMessage message={response.response} />
-//               </div>
-//             )}
-
-//             {response.response_frm == "Ai" && (
-//               <div className="mr-auto" key={response.responseId}>
-//                 <AiResponse message={response.response} />
-//               </div>
-//             )}
-//           </div>
-//         );
-//       })}
-//     </section>
-//   );
-// };
-
-const Input = () => {
-  return (
-    <div className="bg- py-[21px] pb-[64px] gap-3 flex fixed w-full bottom-0  items-center  rounded-lg z-40 border-gray-300 ">
-      <CiCamera className="w-[21px] h-[21px] cursor-pointer hover:text-[#FF612E]" />
-      <FaBahai className="w-[21px] h-[21px] cursor-pointer hover:text-[#FF612E]" />
-      <textarea
-        className="w-full py-[28px] px-4 text-[21px]
-    outline-none placeholder:text-[21px]
-           transition-all resize-none
-          "
-        rows={1}
-        placeholder="Enter your input"
-        onInput={(e) => {
-          const target = e.target as HTMLTextAreaElement;
-          target.style.height = "auto";
-          target.style.height = `${target.scrollHeight}px`;
-        }}
-      />
-
-      <IoIosSend className="cursor-pointer w-[22px] m-2 h-[21px]" />
-    </div>
-  );
-};
-// const Input = () => {
-//   return (
-//     <div className="flex items-center gap-3 bg-gray-100 p-3 fixed bottom-0 w-full border-t border-gray-300">
-//       <CiCamera className="w-6 h-6 cursor-pointer hover:text-[#FF612E]" />
-//       <FaBahai className="w-6 h-6 cursor-pointer hover:text-[#FF612E]" />
-//       <textarea
-//         className="w-full py-2 px-4 text-lg outline-none placeholder:text-lg resize-none"
-//         rows={1}
-//         placeholder="Enter your input"
-//         onInput={(e) => {
-//           const target = e.target as HTMLTextAreaElement;
-//           target.style.height = "auto";
-//           target.style.height = `${target.scrollHeight}px`;
-//         }}
-//       />
-//       <IoIosSend className="cursor-pointer w-6 h-6" />
-//     </div>
-//   );
-// };
-
-// export const ResponseAi = () => {
-//   const [responses, setResponses] = useState<ResponseProp[]>([
-//     {
-//       response_frm: "User",
-//       response: "Q1",
-//       responseId: "123",
-//     },
-//     {
-//       response_frm: "Ai",
-//       response:
-//         " Question 1 (a): The maximum number of nodes in a binary tree with depth d can be calculated using the formula: 2^d - 1. Explanation           This formula is derived from the property of a binary tree where each node can have at most two children.",
-//       responseId: "1233",
-//     },
-//     {
-//       response_frm: "User",
-//       response: "Q2",
-//       responseId: "123",
-//     },
-//     {
-//       response_frm: "Ai",
-//       response:
-//         " Question 1 (a): The maximum number of nodes in a binary tree with depth d can be calculated using the formula: 2^d - 1. Explanation           This formula is derived from the property of a binary tree where each node can have at most two children.",
-//       responseId: "1233",
-//     },
-//     {
-//       response_frm: "User",
-//       response: "Q2",
-//       responseId: "123",
-//     },
-//     {
-//       response_frm: "Ai",
-//       response:
-//         " Question 1 (a): The maximum number of nodes in a binary tree with depth d can be calculated using the formula: 2^d - 1. Explanation           This formula is derived from the property of a binary tree where each node can have at most two children.",
-//       responseId: "1233",
-//     },
-//     {
-//       response_frm: "User",
-//       response: "Q2",
-//       responseId: "123",
-//     },
-//     {
-//       response_frm: "Ai",
-//       response:
-//         " Question 1 (a): The maximum number of nodes in a binary tree with depth d can be calculated using the formula: 2^d - 1. Explanation           This formula is derived from the property of a binary tree where each node can have at most two children.",
-//       responseId: "1233",
-//     },
-//   ]);
-
-//   return (
-//     <section className="relative ">
-//       <div className="flex flex-col gap-3 h-screen ">
-//         <div className=" b-[198px] h-[90vh]">
-//           <ResponseBox responses={responses} />
-//         </div>
-//         <div className="block">
-//           {" "}
-//           <div className="  items-end bg-[#F8F5EE]  ">
-//             <Input />
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-import React, { useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { CiCamera } from "react-icons/ci";
 import { FaBahai } from "react-icons/fa";
@@ -159,10 +11,83 @@ interface ResponseProp {
   response: string;
   responseId: string;
 }
+// const Input = () => {
+//   return (
+//     <div className="bg- py-[18px]  gap-3 flex fixed  bottom-0 w-full px-3 bg-[#101524] items-center  rounded-lg z border-gray-300 ">
+//       <div className="flex items-center gap-4 w-[800px]   mx-auto  ">
+//         {" "}
+//         <CiCamera className="w-[28px] h-[28px] cursor-pointer hover:text-[#FF612E]" />
+//         <FaBahai className="w-[28px] h-[28px] cursor-pointer hover:text-[#FF612E]" />
+//         <textarea
+//           className="w-full py-[16px] px-4 text-[21px] bg-[#676F8B] text-[#454B62] rounded-lg
+//     outline-none placeholder:text-[21px]
+//            transition-all resize-none
+//           "
+//           rows={1}
+//           placeholder="Enter your input"
+//           onInput={(e) => {
+//             const target = e.target as HTMLTextAreaElement;
+//             target.style.height = "auto";
+//             target.style.height = `${target.scrollHeight}px`;
+//           }}
+//         />
+//         <IoIosSend className="cursor-pointer w-[22px] m-2 h-[21px]" />
+//       </div>
+//     </div>
+//   );
+// };
+function InputTaker({
+  setUserMessage,
+}: {
+  setUserMessage: React.Dispatch<SetStateAction<string>>;
+}) {
+  return (
+    <div className="w-full">
+      {" "}
+      <textarea
+        onChange={(e) => {
+          setUserMessage(e.target.value);
+        }}
+        className="w-full py-[16px] px-4 text-[21px] bg-[#676F8B] text-[#454B62] rounded-lg
+        outline-none placeholder:text-[21px]
+               transition-all resize-none
+              "
+        rows={1}
+        placeholder="Enter your input"
+        onInput={(e) => {
+          const target = e.target as HTMLTextAreaElement;
+          target.style.height = "auto";
+          target.style.height = `${target.scrollHeight}px`;
+        }}
+      />
+    </div>
+  );
+}
+export const Input = () => {
+  const [userMessage, setUserMessage] = useState("");
+
+  return (
+    <div
+      className=" py-2 rounded-lg w-full 
+      bg-[#101524] shadow-2xl "
+    >
+      <div
+        className="flex max-sm:gap-[16px] md:gap-3  px-[14px] py-[8px]
+     items-center "
+      >
+        <CiCamera className="w-[28px] h-[28px] cursor-pointer hover:text-[#FF612E]" />
+
+        <FaBahai className="w-[28px] h-[28px] cursor-pointer hover:text-[#FF612E]" />
+        <InputTaker setUserMessage={setUserMessage} />
+        <IoIosSend className="cursor-pointer w-[28px] h-[28px] m-2 " />
+      </div>
+    </div>
+  );
+};
 
 const ResponseBox = ({ responses }: { responses: ResponseProp[] }) => {
   return (
-    <section className="flex flex-col gap-4 overflow-y-auto py-4 px-2 flex-grow">
+    <section className="flex flex-col gap-4 overflow-y-scroll py-4 px-2 w-full">
       {responses.map((response) => {
         return (
           <div key={response.responseId} className="flex gap-4">
@@ -187,56 +112,34 @@ export const ResponseAi = () => {
   const [responses, setResponses] = useState<ResponseProp[]>([
     {
       response_frm: "User",
-      response: "Q1",
-      responseId: "123",
-    },
-    {
-      response_frm: "Ai",
-      response:
-        " Question 1 (a): The maximum number of nodes in a binary tree with depth d can be calculated using the formula: 2^d - 1.",
-      responseId: "1233",
-    },
-    {
-      response_frm: "User",
       response: "Q2",
-      responseId: "1234",
+      responseId: "12347",
     },
     {
       response_frm: "Ai",
       response:
         " Question 2 (a): The minimum height of a binary tree is equal to the depth of the tree.",
-      responseId: "1234",
+      responseId: "12348",
     },
     {
       response_frm: "User",
       response: "Q2",
-      responseId: "1234",
+      responseId: "12349",
     },
     {
       response_frm: "Ai",
       response:
         " Question 2 (a): The minimum height of a binary tree is equal to the depth of the tree.",
-      responseId: "1234",
-    },
-    {
-      response_frm: "User",
-      response: "Q2",
-      responseId: "1234",
-    },
-    {
-      response_frm: "Ai",
-      response:
-        " Question 2 (a): The minimum height of a binary tree is equal to the depth of the tree.",
-      responseId: "1234",
+      responseId: "123401",
     },
   ]);
 
   return (
-    <section className="relative h-screen flex space-y-[96px]  flex-col">
-      <div className="flex-grow  flex flex-col">
+    <section className="relative h-screen flex max-md:space-y-[96px] max-md:flex-row-reverse flex-col">
+      <div className="flex-grow w-full  pb-[196px] flex flex-col">
         <ResponseBox responses={responses} />
       </div>
-      <div className=" bg-red-300 z-30 w-full  ">
+      <div className=" lg:w-1/2 xl:w-[1100px] max-md:w- px-0 lg:px-[64px] fixed bottom-0">
         <Input />
       </div>
     </section>

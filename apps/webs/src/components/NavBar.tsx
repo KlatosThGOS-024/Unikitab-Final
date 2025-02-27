@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
+import { IoIosOptions } from "react-icons/io";
+import PdfToText from "./pdfGeneration/PdfToText";
 
 const SearchBar = () => {
   return (
@@ -19,36 +22,79 @@ const SearchBar = () => {
 };
 
 export const NavBar = () => {
+  const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    const pdfInstance = new PdfToText("/CSC-301_DSA.pdf");
+
+    const getPdfData = async () => {
+      const textData = await pdfInstance.getTextualData();
+      console.log("PDF daata:", textData);
+    };
+
+    getPdfData();
+  });
+
+  const showMenuModal = () => {
+    setShowModal(!showModal);
+  };
   return (
     <section>
-      <div className="flex items-center justify-between px-2 py-[8px] ">
+      <div className="flex items-center relative justify-between px-2 py-[8px] ">
         <div className="flex items-center px-4 gap-5">
           <h2 className="text-[#69D4F3] hover:scale-110 transition-all duration-200 ease-in-out">
             UniKitab
           </h2>
-          <div>
+          <div className="">
             <SearchBar />
           </div>
         </div>
         <div className=" items-center px-4 max-md:hidden  flex gap-6 ">
-          <ul className="flex gap-7  text-[18px]">
+          <ul className="flex gap-7 items-center text-[18px]">
             <li className="hover:text-[#69D4F3] font-[500] text-[#423e3e]">
               Sell Docs
             </li>
             <li className="hover:text-[#69D4F3] font-[500] text-[#423e3e]">
               Educators
             </li>
-            <li className="max-lg:hidden lg:block  hover:text-[#69D4F3]">
-              Login
-            </li>
+            <li className=":block  hover:text-[#69D4F3]">Login</li>{" "}
           </ul>
           <button
             className=" rounded-full transition-all duration-150 ease-out
              max-lg:hidden lg:block  px-4 text-[18px] font-[500]  py-2 bg-[#EC497D] text-white
-           hover:bg-[#C9C9C9] hover:text-[#EC497D]"
+           hover:bg-[#645656] hover:text-[#EC497D]"
           >
             Sign Up
           </button>
+        </div>
+
+        <div className="max-md:block hidden">
+          <IoIosOptions
+            onClick={showMenuModal}
+            className="w-[28px] cursor-pointer h-[28px]"
+          />
+          {showModal && (
+            <div className="bg-white z-20  absolute left-0 -bottom-[188px] right-0  ">
+              <ul className="flex flex-col text-start gap-7 px-3 text-[18px]">
+                <li className="hover:text-[#69D4F3] cursor-pointer font-[500] text-[#423e3e]">
+                  Sell Docs
+                </li>
+                <li className="hover:text-[#69D4F3]  cursor-pointer font-[500] text-[#423e3e]">
+                  Educators
+                </li>
+                <li className=":block  hover:text-[#69D4F3]  cursor-pointer">
+                  Login
+                </li>{" "}
+                <li
+                  className="  transition-all duration-150 ease-out
+             max-md:block md:hidden text-[18px] font-[500] 
+              text-black
+            hover:text-[#EC497D]"
+                >
+                  Sign Up
+                </li>
+              </ul>{" "}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -37,26 +37,17 @@ const page = () => {
           className=" fixed z-40  w-full
          bg-white top-0"
         >
-          {" "}
           <NavBar />
         </div>
 
-        <div className=" mt-[64px]">
+        <div className=" mt-[64px] flex max-md:flex-col">
           {" "}
-          <Split
-            minSize={0}
-            gutterSize={10}
-            gutterAlign="center"
-            className={`${SplitDirection === "horizontal" ? "split-row" : "split-col "}`}
-            direction={SplitDirection}
-          >
-            <div className=" w-full">
-              <PdfViewer />
-            </div>
-            <div className=" overflow-scroll">
-              <ResponseAi />
-            </div>
-          </Split>
+          <div className=" w-full">
+            <PdfViewer />
+          </div>
+          <div className="w-full overflow-scroll">
+            <ResponseAi />
+          </div>
         </div>
       </div>
     </section>

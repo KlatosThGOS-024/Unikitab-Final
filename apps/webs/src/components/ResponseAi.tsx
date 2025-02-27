@@ -68,11 +68,13 @@ export const Input = () => {
 
   return (
     <div
-      className=" py-2 rounded-lg w-full 
+      className=" py-2 rounded-lg w-full max-md:px-3
+    
       bg-[#101524] shadow-2xl "
     >
       <div
-        className="flex max-sm:gap-[16px] md:gap-3  px-[14px] py-[8px]
+        className="flex max-sm:gap-[16px] max-md:gap-3 md:gap-[21px]
+         px-[14px] py-[8px]
      items-center "
       >
         <CiCamera className="w-[28px] h-[28px] cursor-pointer hover:text-[#FF612E]" />
@@ -85,25 +87,31 @@ export const Input = () => {
   );
 };
 
-const ResponseBox = ({ responses }: { responses: ResponseProp[] }) => {
+export const MessageBox = ({ response }: { response: ResponseProp[] }) => {
   return (
-    <section className="flex flex-col gap-4 overflow-y-scroll py-4 px-2 w-full">
-      {responses.map((response) => {
-        return (
-          <div key={response.responseId} className="flex gap-4">
-            {response.response_frm === "User" && (
-              <div className="ml-auto flex items-center">
-                <UserMessage message={response.response} />
-              </div>
-            )}
-            {response.response_frm === "Ai" && (
-              <div className="mr-auto flex items-center">
-                <AiResponse message={response.response} />
-              </div>
-            )}
-          </div>
-        );
-      })}
+    <section className="w-full my-7 pb-[64px] pt-4">
+      <div className="space-y-[21px]">
+        {response.map((value, index) => {
+          if (value.response_frm == "User") {
+            return (
+              value.response != "" && (
+                <div key={index} className="user-message  ">
+                  {value.response != ""}
+                  <UserMessage message={value.response} />
+                </div>
+              )
+            );
+          } else if (value.response_frm == "Ai") {
+            return (
+              value.response != "" && (
+                <div key={index} className="Ai-Response ">
+                  <AiResponse message={value.response} />
+                </div>
+              )
+            );
+          }
+        })}
+      </div>
     </section>
   );
 };
@@ -123,24 +131,48 @@ export const ResponseAi = () => {
     },
     {
       response_frm: "User",
-      response: "Q2",
-      responseId: "12349",
+      response: "Q3",
+      responseId: "12340",
     },
     {
       response_frm: "Ai",
       response:
         " Question 2 (a): The minimum height of a binary tree is equal to the depth of the tree.",
-      responseId: "123401",
+      responseId: "123448",
+    },
+    {
+      response_frm: "User",
+      response: "Q3",
+      responseId: "123540",
+    },
+    {
+      response_frm: "Ai",
+      response:
+        " Question 2 (a): The minimum height of a binary tree is equal to the depth of the tree.",
+      responseId: "1234148",
+    },
+    {
+      response_frm: "User",
+      response: "Q3",
+      responseId: "1235430",
     },
   ]);
 
   return (
     <section className="relative h-screen flex max-md:space-y-[96px] max-md:flex-row-reverse flex-col">
       <div className="flex-grow w-full  pb-[196px] flex flex-col">
-        <ResponseBox responses={responses} />
+        <MessageBox response={responses} />
       </div>
-      <div className=" lg:w-1/2 xl:w-[1100px] max-md:w- px-0 lg:px-[64px] fixed bottom-0">
-        <Input />
+      <div
+        className="md:w-1/2 max-md:w-full fixed bottom-0 md:right-0
+       bg-white"
+      >
+        <div
+          className="max-w-full mx-auto max-md:w-full
+  "
+        >
+          <Input />
+        </div>{" "}
       </div>
     </section>
   );

@@ -6,14 +6,14 @@ import Split from "react-split";
 const page = () => {
   return (
     <section>
-      <div className="overflow-y-hidden">
+      <div className="">
         <NavBar />
 
         <Split className="split" direction="horizontal">
           <div className="f ">
             <PdfViewer />
           </div>
-          <div className=" ">
+          <div className=" overflow-scroll">
             <ResponseAi />
           </div>
         </Split>

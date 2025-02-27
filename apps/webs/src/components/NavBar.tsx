@@ -1,3 +1,4 @@
+import { useParams } from "next/navigation";
 import React from "react";
 import { IoSearchOutline } from "react-icons/io5";
 

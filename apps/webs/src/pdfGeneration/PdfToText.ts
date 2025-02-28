@@ -1,5 +1,5 @@
 import { getDocument } from "pdfjs-dist";
-import { TextItem, TextMarkedContent } from "pdfjs-dist/types/src/display/api";
+import { TextItem } from "pdfjs-dist/types/src/display/api";
 
 class PdfToText {
   pages: number = 0;
@@ -30,7 +30,6 @@ class PdfToText {
       for (let i = 1; i <= this.pages; i++) {
         let textPage = await pdf.getPage(i);
         let text = await textPage.getTextContent();
-
         textContent = text.items
           .map((item: TextItem) => {
             return item.str;
@@ -40,7 +39,6 @@ class PdfToText {
         this.text += textContent;
       }
 
-      console.log(this.text);
       return this.text;
     } catch (error) {
       console.error("Error loading PDF:", error);

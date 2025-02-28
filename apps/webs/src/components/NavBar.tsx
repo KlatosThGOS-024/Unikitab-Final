@@ -23,16 +23,6 @@ const SearchBar = () => {
 
 export const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
-  // useEffect(() => {
-  //   const pdfInstance = new PdfToText("/CSC-301_DSA.pdf");
-
-  //   const getPdfData = async () => {
-  //     const textData = await pdfInstance.getTextualData();
-  //     console.log("PDF daata:", textData);
-  //   };
-
-  //   getPdfData();
-  // });
 
   const showMenuModal = () => {
     setShowModal(!showModal);

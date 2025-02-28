@@ -11,8 +11,8 @@ const getAIresponse = async (message: string) => {
       }),
     });
     const data = await response.json();
-    const text = await data.data;
-    return text;
+
+    return data;
   } catch (error) {
     console.log(error);
   }

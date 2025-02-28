@@ -37,9 +37,9 @@ export const HeroSection = () => {
           >
             {images.map((img, index) => {
               return (
-                <div>
+                <div key={index}>
                   {" "}
-                  <SwiperSlide key={index} className="slide-content w-full ">
+                  <SwiperSlide className="slide-content w-full ">
                     <div className="slide-content">
                       <img className="w-full" src={img} alt="Slide 1" />
                     </div>

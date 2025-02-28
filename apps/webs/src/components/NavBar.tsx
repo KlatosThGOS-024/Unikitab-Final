@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosOptions } from "react-icons/io";
-import PdfToText from "./pdfGeneration/PdfToText";
+import PdfToText from "@/pdfGeneration/PdfToText";
 
 const SearchBar = () => {
   return (
@@ -23,16 +23,16 @@ const SearchBar = () => {
 
 export const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
-  useEffect(() => {
-    const pdfInstance = new PdfToText("/CSC-301_DSA.pdf");
+  // useEffect(() => {
+  //   const pdfInstance = new PdfToText("/CSC-301_DSA.pdf");
 
-    const getPdfData = async () => {
-      const textData = await pdfInstance.getTextualData();
-      console.log("PDF daata:", textData);
-    };
+  //   const getPdfData = async () => {
+  //     const textData = await pdfInstance.getTextualData();
+  //     console.log("PDF daata:", textData);
+  //   };
 
-    getPdfData();
-  });
+  //   getPdfData();
+  // });
 
   const showMenuModal = () => {
     setShowModal(!showModal);
@@ -51,7 +51,7 @@ export const NavBar = () => {
         <div className=" items-center px-4 max-md:hidden  flex gap-6 ">
           <ul className="flex gap-7 items-center text-[18px]">
             <li className="hover:text-[#69D4F3] font-[500] text-[#423e3e]">
-              Sell Docs
+              <a href="/document">Sell Docs</a>
             </li>
             <li className="hover:text-[#69D4F3] font-[500] text-[#423e3e]">
               Educators

@@ -47,17 +47,25 @@ const networkEngineerSub = [
   "Cybersecurity",
 ];
 
-const HoveredSubjects = ({ Subjects }: { Subjects: string[] }) => {
+const HoveredSubjects = ({
+  Subjects,
+  prefix,
+}: {
+  Subjects: string[];
+  prefix: string;
+}) => {
   return (
     <div>
       <ul>
-        {Subjects.map((subs, index) => {
+        {Subjects.map((sub, index) => {
+          const key = `${prefix}-${index}-${sub}`;
+          console.log(key); // Log the generated key
           return (
             <li
-              key={index}
+              key={`${prefix}-${index}-${sub}`}
               className="flex cursor-pointer items-center justify-between gap-x-[64px] my-2 hover:text-[#33BFFA] flex-nowrap"
             >
-              <span className="">{subs}</span>
+              <span className="">{sub}</span>
               <FaChevronRight />
             </li>
           );
@@ -111,7 +119,7 @@ export const Navigation = () => {
             {showModalOne && (
               <div className="absolute z-40 px-4 py-1 rounded-lg bg-white top-[38px] ">
                 {" "}
-                <HoveredSubjects Subjects={allSub} />
+                <HoveredSubjects Subjects={allSub} prefix="allSub" />
               </div>
             )}
           </li>
@@ -131,7 +139,10 @@ export const Navigation = () => {
             {showModalTwo && (
               <div className="absolute z-40 px-4 py-1 rounded-lg bg-white top-[38px] ">
                 {" "}
-                <HoveredSubjects Subjects={softwareEngineerSub} />
+                <HoveredSubjects
+                  Subjects={softwareEngineerSub}
+                  prefix="softwareEngineerSub"
+                />
               </div>
             )}
           </li>
@@ -151,7 +162,10 @@ export const Navigation = () => {
             {showModalThree && (
               <div className="absolute z-40 px-4 py-1 rounded-lg bg-white top-[38px] ">
                 {" "}
-                <HoveredSubjects Subjects={networkEngineerSub} />
+                <HoveredSubjects
+                  prefix="networkEngineerSub"
+                  Subjects={networkEngineerSub}
+                />
               </div>
             )}
           </li>

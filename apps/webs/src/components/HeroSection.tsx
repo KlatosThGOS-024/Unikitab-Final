@@ -6,9 +6,8 @@ import {
   Scrollbar,
   A11y,
   Autoplay,
-} from "swiper/modules"; // Import Autoplay
+} from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -19,25 +18,24 @@ const images = [
   "https://www.studypool.com/img/backgrounds/homepage_bg_v2/splash_5.jpg",
 ];
 export const HeroSection = () => {
+  let cnt = 0;
   return (
     <section>
       <div>
         <div className="carousel-container relative">
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]} // Add Autoplay module
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             spaceBetween={50}
             slidesPerView={1}
-            loop={true}
-            // autoplay={{
-            //   delay: 4000,
-            //   disableOnInteraction: false, // Keeps autoplay running after user interaction
-            // }}
             navigation={true}
-            onSwiper={(swiper) => console.log(swiper)}
+            loop={true}
           >
             {images.map((img, index) => {
+              cnt++;
+              const key = `hero-slide-${index}-${img}-${cnt}`;
+              console.log(key);
               return (
-                <div key={index}>
+                <div key={`hero-${key}`}>
                   {" "}
                   <SwiperSlide className="slide-content w-full ">
                     <div className="slide-content">
